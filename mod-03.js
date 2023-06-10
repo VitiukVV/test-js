@@ -502,16 +502,168 @@
 // }
 // console.log(findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7));
 //
-const firstBook = {
-  title: "The Last Kingdom",
-  coverImage:
-    "https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg",
-};
+//
+/* task 34 */
+/* Додай об'єкту bookShelf ще два методи, які поки що будуть повертати просто рядки за аналогією з getBooks() і addBook(bookName).
 
-const {
-  title: firstTitle,
-  coverImage: firstCoverImage = "https://via.placeholder.com/640/480",
-} = firstBook;
+Метод removeBook(bookName) буде видаляти книгу за назвою. Повертає рядок "Deleting book <назва книги>", де <назва книги> - це значення параметра bookName.
 
-console.log(firstTitle); // The Last Kingdom
-console.log(firstCoverImage); // https://images-na.ssl-images-amazon.com/images/I/51b5YG6Y1rL.jpg
+Метод updateBook(oldName, newName) буде оновлювати назву книги на нову. Повертає рядок "Updating book <стара назва> to <нова назва>", де <стара назва> і <нова назва> - це значення параметрів oldName і newName відповідно. */
+// const bookShelf = {
+//   // Change code below this line
+//   books: ["The last kingdom", "The guardian of dreams"],
+//   getBooks() {
+//     return "Returning all books";
+//   },
+//   addBook(bookName) {
+//     return `Adding book ${bookName}`;
+//   },
+//   removeBook(bookName) {
+//     return `Deleting book ${bookName}`;
+//   },
+//   updateBook(oldName, newName) {
+//     return `Updating book ${oldName} to ${newName}`;
+//   },
+//   // Change code above this line
+// };
+// console.log(bookShelf.addBook("Haze"));
+// console.log(bookShelf.removeBook("Red sunset"));
+//
+//
+/* task 35 */
+/* Доповни метод updateBook(oldName, newName) таким чином, щоб він змінював назву книги з oldName на newName у властивості books. Використовуй indexOf() для того, щоб знайти потрібний елемент масиву, і splice() для того, щоб замінити цей елемент. */
+// const bookShelf = {
+//   books: ["The last kingdom", "Haze", "The guardian of dreams"],
+//   updateBook(oldName, newName) {
+//     // Change code below this line
+//     this.books.splice(this.books.indexOf(oldName), 1, newName);
+//     return this.books;
+//     // Change code above this line
+//   },
+// };
+// console.log(bookShelf.updateBook("Haze", "Dungeon chronicles"));
+//
+//
+/* task 36 */
+/* До нас звернулася власниця крамниці зілля «У старої жаби» і замовила програму для ведення інвентарю - додавання, видалення, пошуку та оновлення зілля. Додай об'єкту atTheOldToad властивість potions, значенням якої зроби порожній масив. */
+/* task 37
+Додай об'єкту atTheOldToad метод getPotions(), який просто повертає значення властивості potions. */
+/* task 38
+Доповни метод addPotion(potionName) таким чином, щоб він додавав зілля potionName в кінець масиву зілля у властивості potions. */
+/* task 39
+Доповни метод removePotion(potionName) таким чином, щоб він видаляв зілля potionName з масиву зілля у властивості potions. */
+/* task 40
+Доповни метод updatePotionName(oldName, newName) таким чином, щоб він оновлював назву зілля з oldName на newName в масиві зілля у властивості potions. */
+// const atTheOldToad = {
+//   potions: ["Speed potion", "Dragon breath", "Stone skin"],
+//   updatePotionName(oldName, newName) {
+//     // Change code below this line
+//     this.potions.splice(this.potions.indexOf(oldName), 1, newName);
+//     return this.potions;
+//     // Change code above this line
+//   },
+// };
+// console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
+//
+//
+/* task 41
+Замовниця хоче, щоб кожне зілля було представлено не тільки ім'ям, але й ціною, а в майбутньому, можливо, й іншими характеристиками. Тому зараз у властивості potions буде зберігатися масив об'єктів з наступними властивостями.
+
+{
+  name: "Dragon breath",
+  price: 700
+}
+Виконай рефакторинг методів об'єкта atTheOldToad таким чином, щоб вони працювали не з масивом рядків, а з масивом об'єктів.
+
+getPotions() - метод для отримання всього зілля. Повертає значення властивості potions.
+addPotion(newPotion) - додає зілля newPotion (вже об'єкт) в масив у властивості potions, але тільки, якщо такого зілля ще немає в інвентарі. В іншому випадку повертається рядок.
+removePotion(potionName) - видаляє об'єкт зілля з ім'ям potionName з масиву у властивості potions.
+updatePotionName(oldName, newName) - оновлює властивість name об'єкта-зілля з назвою oldName на newName в масиві potions. */
+// const atTheOldToad = {
+//   potions: [
+//     { name: "Speed potion", price: 460 },
+//     { name: "Dragon breath", price: 780 },
+//     { name: "Stone skin", price: 520 },
+//   ],
+//   // Change code below this line
+//   getPotions() {
+//     return this.potions;
+//   },
+//   addPotion(newPotion) {
+//     for (const potion of this.potions) {
+//       if (potion.name === newPotion.name) {
+//         return `Error! Potion ${newPotion.name} is already in your inventory!`;
+//       }
+//     }
+//     this.potions.push(newPotion);
+//     return this.potions;
+//   },
+//   removePotion(potionName) {
+//     const { potions } = this;
+//     for (let i = 0; i < potions.length; i += 1) {
+//       if (potions[i].name === potionName) {
+//         potions.splice(i, 1);
+//       }
+//     }
+//     return potions;
+//   },
+//   updatePotionName(oldName, newName) {
+//     const { potions } = this;
+//     for (let i = 0; i < potions.length; i += 1) {
+//       if (potions[i].name === oldName) {
+//         potions[i].name = newName;
+//       }
+//     }
+//     return potions;
+//   },
+//   // Change code above this line
+// };
+// // console.log(atTheOldToad.removePotion("Dragon breath"));
+// console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
+//
+//
+///* task  */
+///**
+// *? Зробіть знижку 20% на всі фрукти у масиві
+// *? Надайте ід для кожного продукту
+// */
+// const fruits = [
+//   { name: "apple", price: 200 },
+//   { name: "orange", price: 300 },
+//   { name: "grapes", price: 750 },
+// ];
+// function discount(params) {
+//   for (const fruit of fruits) {
+//     console.log(fruit.price);
+//     fruit.price = fruit.price * params;
+//   }
+//   return fruits;
+// }
+// console.log(discount(0.8));
+// function addIdentify() {
+// for (let i = 1; i < fruits.length + 1; i += 1) {
+//   fruits[i].identify = i;
+// }
+// return fruits;
+// }
+// console.log(addIdentify());
+
+const fruits = [
+  { name: "apple", price: 200 },
+  { name: "orange", price: 300 },
+  { name: "grapes", price: 750 },
+];
+// /* функція яка рахує задану знижку */
+// function discount(params) {
+//   for (const fruit of fruits) {
+//     console.log(fruit.price);
+//     fruit.price = fruit.price * params;
+//   }
+//   return fruits;
+// }
+// console.log(discount(0.8));
+// /* додавання ід для масиву об'єктів */
+for (let i = 0; i < fruits.length; i += 1) {
+  fruits[i].identify = Date.now() + i;
+}
+console.log(fruits);
