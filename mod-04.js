@@ -129,6 +129,7 @@
  */
 // Change code below this line
 // const calculateTotalPrice = (quantity, pricePerItem) => quantity * pricePerItem;
+
 /* task 10
 Виконай рефакторинг функції calculateTotalPrice(orderedItems), замінивши її оголошення на стрілочну функцію. Заміни колбек-функцію, передану в метод forEach(), на стрілочну функцію. */
 // Change code below this line
@@ -326,6 +327,7 @@
 // const booksByAuthor = books.filter((book) => book.author === AUTHOR);
 // console.log(topRatedBooks);
 // console.log(booksByAuthor);
+
 /* task 22
 Доповни функцію getUsersWithEyeColor(users, color) таким чином, щоб вона повертала масив користувачів, у яких колір очей (властивість eyeColor) збігається зі значенням параметра color. */
 // Change code below this line
