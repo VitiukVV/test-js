@@ -83,22 +83,52 @@
 // }
 
 /* перевірка кліку на кнопку (фільтр цілі делегування) */
-const tagsContainer = document.querySelector(".js-tags");
-const selectedTags = new Set();
-tagsContainer.addEventListener("click", onClick);
+// const tagsContainer = document.querySelector(".js-tags");
+// const selectedTags = new Set();
+// tagsContainer.addEventListener("click", onClick);
 
-function onClick(evt) {
-  if (evt.target.nodeName !== "BUTTON") {
-    return;
-  }
-  const btn = evt.target;
-  const tag = btn.dataset.value;
-  const isActive = btn.classList.contains("tags__btn-active");
+// function onClick(evt) {
+//   if (evt.target.nodeName !== "BUTTON") {
+//     return;
+//   }
+//   const btn = evt.target;
+//   const tag = btn.dataset.value;
+//   const isActive = btn.classList.contains("tags__btn-active");
 
-  if (isActive) {
-    selectedTags.delete(tag);
-  } else {
-    selectedTags.add(tag);
-  }
-  btn.classList.toggle("tags__btn-active");
-}
+//   if (isActive) {
+//     selectedTags.delete(tag);
+//   } else {
+//     selectedTags.add(tag);
+//   }
+//   btn.classList.toggle("tags__btn-active");
+// }
+
+// const myPlants = [
+//   {
+//     type: "flowers",
+//     list: ["rose", "tulip", "dandelion"],
+//   },
+//   {
+//     type: "trees",
+//     list: ["fir", "pine", "birch"],
+//   },
+// ];
+
+// const secondTree = myPlants[1].list[1];
+// console.log("🚀 ~ secondTree:", secondTree);
+
+const BASE_URL = "https://jsonplaceholder.typicode.com";
+
+let result = null;
+fetch(`${BASE_URL}/users?_limit=9&_sort=name`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    result = data;
+    console.log(result);
+  })
+  .catch(console.warn);
